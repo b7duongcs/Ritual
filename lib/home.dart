@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ritual/stores/home_store.dart';
+import 'package:ritual/screens/routinesscreen.dart';
+import 'package:ritual/screens/statsscreen.dart';
+import 'package:ritual/screens/profilescreen.dart';
+
+final routines = List<Routine>.generate(
+  5,
+  (i) =>
+      Routine('Routine $i', List<int>.generate(6, (i) => i), TimeOfDay.now()),
+);
 
 class Home extends StatelessWidget {
   static Map<AppTab, Widget> _tabOptions = {
-    AppTab.ROUTINES: RoutinesScreen(),
+    AppTab.ROUTINES: RoutinesScreen(routines: routines),
     AppTab.STATS: StatsScreen(),
     AppTab.PROFILE: ProfileScreen()
   };
